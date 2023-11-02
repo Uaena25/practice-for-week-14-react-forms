@@ -4,6 +4,8 @@ function ContactUs() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneType, setPhoneType] = useState("");
+  const [comments, setComments] = useState("");
 
   const onSubmit = (e) => {
     // Prevent the default form behavior so the page doesn't reload.
@@ -13,6 +15,8 @@ function ContactUs() {
       name,
       email,
       phone,
+      comments,
+      phoneType,
       submittedOn: new Date()
     };
 
@@ -24,6 +28,8 @@ function ContactUs() {
     setName("");
     setEmail("");
     setPhone("");
+    setPhoneType("");
+    setComments("");
   };
 
   return (
@@ -55,6 +61,27 @@ function ContactUs() {
             type="text"
             onChange={(e) => setPhone(e.target.value)}
             value={phone}
+          />
+        </div>
+        <select
+          name="phoneType"
+          onChange={(e) => setPhoneType(e.target.value)}
+          value={phoneType}
+        >
+          <option value="" disabled>
+            Select a phone type...
+          </option>
+          <option>Home</option>
+          <option>Work</option>
+          <option>Mobile</option>
+        </select>
+        <div>
+          <label htmlFor="comments">Comments:</label>
+          <textarea
+            id="comments"
+            name="comments"
+            onChange={(e) => setComments(e.target.value)}
+            value={comments}
           />
         </div>
         <button>Submit</button>
